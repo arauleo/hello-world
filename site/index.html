@@ -2,89 +2,167 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Chá do Santiago • Confirmação</title>
-<meta name="theme-color" content="#29441f">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Chá do Santiago</title>
+<meta name="theme-color" content="#66785d">
 <style>
-:root{--bg:#f7f4ea;--card:#fffdf8;--green:#29441f;--sage:#8a9974;--blue:#a9c9df;--ink:#27341f;--muted:#6d7465;--line:#ddd8c9;--danger:#a53c35}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-.wrap{max-width:820px;margin:auto;padding:28px 18px 60px}.hero{text-align:center;padding:14px 0 22px}.kicker{letter-spacing:.27em;text-transform:uppercase;font-size:12px;color:var(--sage)}
-h1,h2{font-family:Georgia,serif;color:var(--green)}h1{font-size:42px;margin:8px 0 8px}.sub{color:var(--muted);line-height:1.55}
-.info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}.info div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;text-align:center;font-size:14px}
-.links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0 24px}.links a{text-decoration:none;color:var(--green);background:white;border:1px solid var(--line);padding:10px 14px;border-radius:999px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 8px 30px rgba(41,68,31,.05);margin-bottom:18px}
-.gifts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}.gift{background:#f1f0e8;border:1px solid #e4dfd1;border-radius:16px;padding:13px 14px;display:flex;gap:10px;align-items:flex-start}.gift b{display:block;color:var(--green)}.gift span{font-size:14px;color:var(--muted)}
-.row{display:grid;grid-template-columns:1.6fr 1fr 1fr auto;gap:10px;align-items:center;margin:10px 0}
-input,select,button{font:inherit}input,select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink)}
-button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}.primary{background:var(--green);color:white;font-weight:700;width:100%;font-size:17px;margin-top:18px}
-.secondary{background:#edf0e6;color:var(--green)}.remove{background:transparent;color:#888;font-size:20px;padding:8px}
-.note{background:#f0eee5;border-radius:16px;padding:14px 16px;color:#5d6355;font-size:14px;margin:16px 0}
-.msg{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;font-size:14px}.err{display:block;background:#fff0ee;color:var(--danger)}.ok{display:block;background:#edf6e9;color:#31552a}
-.small{font-size:12px;color:var(--muted);text-align:center;margin-top:18px}
-@media(max-width:680px){.info{grid-template-columns:1fr}.gifts{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.row input{grid-column:1/-1}.row .remove{grid-column:2;justify-self:end}h1{font-size:34px}}
+:root{
+  --bg:#f6f2e8; --paper:#fffdf8; --green:#31452d; --sage:#809174;
+  --blue:#c4dceb; --ink:#253022; --muted:#70766b; --line:#dfdbcf;
+  --soft:#eef0e8; --danger:#a24b43; --shadow:0 16px 42px rgba(49,69,45,.09);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(196,220,235,.34),transparent 28%),
+    radial-gradient(circle at 92% 5%,rgba(128,145,116,.18),transparent 22%),
+    var(--bg);
+}
+a{color:inherit}.wrap{max-width:940px;margin:auto;padding:24px 18px 96px}
+.hero{text-align:center;padding:34px 12px 18px}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;
+  background:rgba(255,255,255,.72);border:1px solid var(--line);
+  color:var(--green);font-size:12px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;
+}
+h1,h2{font-family:Georgia,"Times New Roman",serif;color:var(--green)}
+h1{font-size:clamp(44px,8vw,70px);line-height:.95;margin:18px 0 10px;font-weight:600}
+.hero p{max-width:650px;margin:0 auto;color:var(--muted);line-height:1.65;font-size:16px}
+.decor{font-size:25px;margin-top:14px;letter-spacing:8px;opacity:.78}
+.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.event{
+  background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:21px;
+  padding:17px;text-align:center;box-shadow:0 8px 24px rgba(49,69,45,.04)
+}
+.event .ico{font-size:22px}.event b{display:block;color:var(--green);margin:6px 0 2px}.event small{color:var(--muted);line-height:1.45}
+.quick{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:8px 0 28px}
+.quick a{
+  background:#fff;border:1px solid var(--line);padding:11px 15px;border-radius:999px;
+  text-decoration:none;font-weight:750;color:var(--green);box-shadow:0 5px 14px rgba(49,69,45,.04)
+}
+.quick a:hover{transform:translateY(-1px)}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:28px;
+  padding:clamp(20px,4vw,30px);box-shadow:var(--shadow);margin:18px 0
+}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:var(--sage)}
+.card h2{font-size:30px;margin:6px 0}.sub{color:var(--muted);line-height:1.58;margin:0 0 18px}
+.form-row{display:grid;grid-template-columns:1.7fr 1fr 1fr auto;gap:10px;align-items:center;margin:10px 0}
+input,select,button{font:inherit}
+input,select{
+  width:100%;padding:14px;border:1px solid #d8d3c7;border-radius:14px;
+  background:#fff;color:var(--ink);outline:none
+}
+input:focus,select:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(128,145,116,.14)}
+button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}
+.primary{
+  background:var(--green);color:#fff;font-weight:850;width:100%;font-size:17px;
+  margin-top:16px;box-shadow:0 9px 20px rgba(49,69,45,.21)
+}
+.primary:disabled{opacity:.65;cursor:wait}.secondary{background:var(--soft);color:var(--green);font-weight:750}
+.remove{background:transparent;color:#999;font-size:22px;padding:8px}
+.note{background:#f2efe5;border-radius:16px;padding:13px 15px;color:#5f655a;font-size:14px;margin:15px 0}
+.msg{display:none;margin-top:14px;padding:12px 14px;border-radius:13px;font-size:14px}
+.err{display:block;background:#fff0ed;color:var(--danger)}.ok{display:block;background:#edf6e9;color:#31552a}
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+.gift{
+  background:var(--soft);border:1px solid #e2ded3;border-radius:18px;padding:14px;min-height:105px;
+  transition:transform .15s ease,box-shadow .15s ease
+}
+.gift:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(49,69,45,.06)}
+.gift .gico{font-size:22px}.gift b{display:block;color:var(--green);margin:6px 0 3px}
+.gift span{font-size:13px;color:var(--muted);line-height:1.4}
+.footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 8px}
+.mobile-cta{
+  display:none;position:fixed;left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:20;
+  text-decoration:none;background:var(--green);color:#fff;text-align:center;font-weight:850;
+  padding:14px 18px;border-radius:999px;box-shadow:0 13px 30px rgba(37,48,34,.28)
+}
+@media(max-width:760px){
+  .wrap{padding:14px 14px 92px}.hero{padding-top:26px}.event-grid{grid-template-columns:1fr}
+  .gift-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr 1fr}
+  .form-row input{grid-column:1/-1}.form-row .remove{grid-column:2;justify-self:end}
+  .card{border-radius:23px}.mobile-cta{display:block}
+}
+@media(max-width:480px){.gift-grid{grid-template-columns:1fr}.quick a{flex:1;text-align:center}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<section class="hero">
-<div class="kicker">Confirmação de presença</div>
-<h1>Chá do Santiago</h1>
-<div class="sub">10 de outubro de 2026 • almoço das 12h30 às 14h30<br>Marine Home & Resort, Cachoeira do Bom Jesus</div>
-</section>
+  <header class="hero">
+    <div class="pill">🌿 Chá do bebê</div>
+    <h1>Santiago</h1>
+    <p>Estamos preparando um dia especial para celebrar a chegada do Santiago e queremos muito dividir esse momento com vocês.</p>
+    <div class="decor">🦕 · ☁️ · 🌿</div>
+  </header>
 
-<div class="info">
-<div><b>📅 10/10/2026</b><br>sábado</div>
-<div><b>🕧 12h30–14h30</b><br>podem chegar um pouco antes</div>
-<div><b>📍 Marine Home & Resort</b><br>Av. Luiz Boiteux Piazza, 4413</div>
+  <section class="event-grid" aria-label="Informações do evento">
+    <div class="event"><div class="ico">📅</div><b>10 de outubro de 2026</b><small>Sábado</small></div>
+    <div class="event"><div class="ico">🕧</div><b>12h30 às 14h30</b><small>O almoço será servido nesse período. Podem chegar um pouco antes.</small></div>
+    <div class="event"><div class="ico">📍</div><b>Marine Home & Resort</b><small>Av. Luiz Boiteux Piazza, 4413<br>Cachoeira do Bom Jesus</small></div>
+  </section>
+
+  <nav class="quick" aria-label="Atalhos">
+    <a href="https://www.google.com/maps/search/?api=1&query=Marine%20Home%20%26%20Resort%20Av.%20Luiz%20Boiteux%20Piazza%204413%20Florianopolis" target="_blank" rel="noopener">📍 Google Maps</a>
+    <a href="https://www.waze.com/ul?q=Marine%20Home%20%26%20Resort%20Av.%20Luiz%20Boiteux%20Piazza%204413%20Florianopolis&navigate=yes" target="_blank" rel="noopener">🚙 Waze</a>
+    <a href="https://eventogra.ph/8uDTChGK" target="_blank" rel="noopener">📸 Fotos do Chá</a>
+  </nav>
+
+  <section class="card" id="confirmar">
+    <div class="kicker">Confirmação de presença</div>
+    <h2>Você vem? 💛</h2>
+    <p class="sub">Preencha seus dados e adicione cada acompanhante. Cada pessoa deve aparecer em apenas uma confirmação.</p>
+
+    <div class="form-row">
+      <input id="nome" placeholder="Seu nome completo" autocomplete="name">
+      <select id="sexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select>
+      <select id="faixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select>
+      <span></span>
+    </div>
+
+    <div id="acomp"></div>
+    <button class="secondary" type="button" onclick="addAcomp()">＋ Adicionar acompanhante</button>
+    <div class="note">Preencha nome, Homem/Mulher e Adulto/Criança de todos os acompanhantes antes de confirmar.</div>
+    <div id="msg" class="msg" role="status"></div>
+    <button id="submit" class="primary" type="button" onclick="enviar()">Confirmar presença</button>
+  </section>
+
+  <section class="card">
+    <div class="kicker">Para o Santiago</div>
+    <h2>Sugestões de presentes 🎁</h2>
+    <p class="sub">Se quiserem levar um mimo, separamos algumas sugestões úteis para os primeiros meses.</p>
+
+    <div class="gift-grid">
+      <div class="gift"><div class="gico">🧷</div><b>Fraldas Pampers</b><span>Tamanhos M, G, GG ou XG</span></div>
+      <div class="gift"><div class="gico">🧺</div><b>Paninhos de boca</b><span>Itens de uso diário</span></div>
+      <div class="gift"><div class="gico">👶</div><b>Babadores</b><span>Qualquer modelo infantil</span></div>
+      <div class="gift"><div class="gico">🧻</div><b>Lenços umedecidos</b><span>Pacotes para bebê</span></div>
+      <div class="gift"><div class="gico">☁️</div><b>Algodão quadrado</b><span>Para higiene do bebê</span></div>
+      <div class="gift"><div class="gico">🧴</div><b>Pomada para assadura</b><span>Uso infantil</span></div>
+      <div class="gift"><div class="gico">🫧</div><b>Sabonete</b><span>Em barra ou líquido</span></div>
+      <div class="gift"><div class="gico">🛁</div><b>Toalha com capuz</b><span>Toalha de banho infantil</span></div>
+      <div class="gift"><div class="gico">🧸</div><b>Pano de corpo</b><span>Para o dia a dia</span></div>
+    </div>
+  </section>
+
+  <footer class="footer">Esperamos vocês para celebrar com a gente. 🌿</footer>
 </div>
 
-<div class="links">
-<a href="https://www.google.com/maps/search/?api=1&query=Marine%20Home%20%26%20Resort%20Av.%20Luiz%20Boiteux%20Piazza%204413%20Florianopolis" target="_blank" rel="noopener">Google Maps</a>
-<a href="https://www.waze.com/ul?q=Marine%20Home%20%26%20Resort%20Av.%20Luiz%20Boiteux%20Piazza%204413%20Florianopolis&navigate=yes" target="_blank" rel="noopener">Waze</a>
-<a href="https://eventogra.ph/8uDTChGK" target="_blank" rel="noopener">Fotos do Chá 📸</a>
-</div>
+<a class="mobile-cta" href="#confirmar">Confirmar presença</a>
 
-<div class="card">
-<h2 style="margin-top:0">Sugestões de presentes 🎁</h2>
-<p class="sub">Para quem quiser levar um mimo para o Santiago, estas são algumas sugestões:</p>
-<div class="gifts">
-  <div class="gift"><div>🧷</div><div><b>Fraldas Pampers</b><span>Tamanhos M, G, GG ou XG</span></div></div>
-  <div class="gift"><div>🧺</div><div><b>Paninhos de boca</b><span>Itens de uso diário</span></div></div>
-  <div class="gift"><div>👶</div><div><b>Babadores</b><span>Qualquer modelo infantil</span></div></div>
-  <div class="gift"><div>🧻</div><div><b>Lenços umedecidos</b><span>Pacotes para bebê</span></div></div>
-  <div class="gift"><div>☁️</div><div><b>Algodão quadrado</b><span>Para higiene do bebê</span></div></div>
-  <div class="gift"><div>🧴</div><div><b>Pomada para assadura</b><span>Uso infantil</span></div></div>
-  <div class="gift"><div>🫧</div><div><b>Sabonete</b><span>Em barra ou líquido</span></div></div>
-  <div class="gift"><div>🛁</div><div><b>Toalha de banho com capuz</b><span>Infantil</span></div></div>
-  <div class="gift"><div>🧸</div><div><b>Pano de corpo</b><span>Para o dia a dia</span></div></div>
-</div>
-</div>
-
-<div class="card">
-<h2 style="margin-top:0">Você vem?</h2>
-<p class="sub">Escreva seu nome, marque as opções e inclua cada pessoa que vem com você.</p>
-<div class="row">
-<input id="nome" placeholder="Seu nome completo" autocomplete="name">
-<select id="sexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select>
-<select id="faixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select>
-<span></span>
-</div>
-<div id="acomp"></div>
-<button class="secondary" type="button" onclick="addAcomp()">＋ Adicionar acompanhante</button>
-<div class="note">💛 Não esqueça de preencher nome, Homem/Mulher e Adulto/Criança de todos os acompanhantes.</div>
-<div id="msg" class="msg"></div>
-<button id="submit" class="primary" type="button" onclick="enviar()">Confirmar presença</button>
-</div>
-<div class="small">Chá do Santiago</div>
-</div>
 <script>
 const API="https://boqtftbesaypalvfxkjd.supabase.co/functions/v1/rsvp";
 function addAcomp(){
-  const d=document.createElement('div'); d.className='row acomp';
-  d.innerHTML='<input class="anome" placeholder="Nome do acompanhante"><select class="asexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select><select class="afaixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select><button class="remove" type="button" onclick="this.parentElement.remove()">×</button>';
+  const d=document.createElement('div'); d.className='form-row acomp';
+  d.innerHTML='<input class="anome" placeholder="Nome do acompanhante"><select class="asexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select><select class="afaixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select><button class="remove" type="button" aria-label="Remover acompanhante" onclick="this.parentElement.remove()">×</button>';
   document.getElementById('acomp').appendChild(d);
 }
-function show(t,type='err'){const m=document.getElementById('msg');m.textContent=t;m.className='msg '+type}
+function show(t,type='err'){
+  const m=document.getElementById('msg');m.textContent=t;m.className='msg '+type;
+  m.scrollIntoView({behavior:'smooth',block:'nearest'})
+}
 async function enviar(){
   const nome=document.getElementById('nome').value.trim(),sexo=document.getElementById('sexo').value,faixa=document.getElementById('faixa').value;
   if(!nome||!sexo||!faixa)return show('Preencha seu nome, Homem/Mulher e Adulto/Criança.');
@@ -95,7 +173,7 @@ async function enviar(){
     const res=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({nome,sexo,faixa,acompanhantes})});
     const out=await res.json();
     if(!res.ok)show(out.error||'Não foi possível confirmar.');
-    else{show('Presença confirmada! 💛','ok');b.style.display='none';}
+    else{show('Presença confirmada! 💛','ok');b.style.display='none';document.querySelector('.mobile-cta').style.display='none';}
   }catch(e){show('Falha de conexão. Tente novamente em instantes.')}
   finally{b.disabled=false;if(b.style.display!=='none')b.textContent='Confirmar presença'}
 }
