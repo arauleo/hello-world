@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin • Chá do Santiago</title>
+<meta name="theme-color" content="#29441f">
+<style>
+:root{--bg:#f7f4ea;--card:#fffdf8;--green:#29441f;--sage:#8a9974;--ink:#27341f;--muted:#6d7465;--line:#ddd8c9;--danger:#a53c35}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:28px 18px 60px}h1,h2{font-family:Georgia,serif;color:var(--green)}h1{margin-bottom:4px}.sub{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;margin:18px 0;box-shadow:0 8px 30px rgba(41,68,31,.05)}
+.login{max-width:460px;margin:60px auto}.row{display:flex;gap:10px;align-items:center}
+input,button{font:inherit}input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:white}
+button{border:0;border-radius:999px;padding:12px 16px;cursor:pointer}.primary{background:var(--green);color:white;font-weight:700}.secondary{background:#edf0e6;color:var(--green)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:#f1f0e8;border-radius:16px;padding:16px;text-align:center}.num{font-size:28px;font-weight:800;color:var(--green)}
+.item{border-top:1px solid var(--line);padding:14px 0}.item:first-child{border-top:0}.head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.name{font-weight:800}.meta{color:var(--muted);font-size:14px}.companions{margin:8px 0 0 18px;color:#46513e}.badge{font-size:12px;background:#edf0e6;padding:4px 8px;border-radius:999px;color:var(--green)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center}.msg{color:var(--danger);margin-top:10px}.hidden{display:none}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.head{flex-direction:column}.row{flex-direction:column}.row button{width:100%}}
+</style>
+</head>
+<body><div class="wrap">
+<section id="login" class="card login">
+  <h1>Admin do Chá</h1>
+  <p class="sub">Digite a senha administrativa para ver os confirmados.</p>
+  <div class="row"><input id="senha" type="password" placeholder="Senha"><button class="primary" onclick="entrar()">Entrar</button></div>
+  <div id="erro" class="msg"></div>
+</section>
+
+<section id="painel" class="hidden">
+  <div class="toolbar">
+    <div><h1>Chá do Santiago</h1><div class="sub">Lista de confirmados</div></div>
+    <div><button class="secondary" onclick="carregar()">Atualizar</button> <button class="secondary" onclick="sair()">Sair</button></div>
+  </div>
+  <div class="card">
+    <div class="stats">
+      <div class="stat"><div id="sConfirmacoes" class="num">0</div><div>confirmações</div></div>
+      <div class="stat"><div id="sPessoas" class="num">0</div><div>pessoas</div></div>
+      <div class="stat"><div id="sAdultos" class="num">0</div><div>adultos</div></div>
+      <div class="stat"><div id="sCriancas" class="num">0</div><div>crianças</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="toolbar"><h2 style="margin:0">Confirmados</h2><span id="atualizado" class="sub"></span></div>
+    <div id="lista"></div>
+  </div>
+</section>
+</div>
+<script>
+const API="https://boqtftbesaypalvfxkjd.supabase.co/functions/v1/rsvp-admin";
+let senha="";
+
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]))}
+function rotuloSexo(v){return v==="homem"?"Homem":v==="mulher"?"Mulher":"—"}
+function rotuloFaixa(v){return v==="adulto"?"Adulto":v==="crianca"?"Criança":"—"}
+
+async function entrar(){
+  senha=document.getElementById("senha").value.trim();
+  if(!senha){document.getElementById("erro").textContent="Digite a senha.";return}
+  await carregar(true);
+}
+
+async function carregar(login=false){
+  try{
+    const r=await fetch(API,{headers:{"x-admin-key":senha}});
+    const out=await r.json();
+    if(!r.ok) throw new Error(out.error||"Falha ao carregar");
+    document.getElementById("erro").textContent="";
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("painel").classList.remove("hidden");
+    document.getElementById("sConfirmacoes").textContent=out.totais.confirmacoes;
+    document.getElementById("sPessoas").textContent=out.totais.pessoas;
+    document.getElementById("sAdultos").textContent=out.totais.adultos;
+    document.getElementById("sCriancas").textContent=out.totais.criancas;
+    document.getElementById("atualizado").textContent="Atualizado agora";
+    const lista=document.getElementById("lista");
+    lista.innerHTML=out.confirmacoes.map(r=>{
+      const ac=(r.acompanhantes||[]).map(a=>`<li><b>${esc(a.nome)}</b> · ${rotuloSexo(a.sexo)} · ${rotuloFaixa(a.faixa)}</li>`).join("");
+      return `<div class="item">
+        <div class="head">
+          <div><div class="name">${esc(r.nome)}</div><div class="meta">${rotuloSexo(r.sexo)} · ${rotuloFaixa(r.faixa)}</div></div>
+          <div class="badge">${Number(r.total_pessoas||1)} pessoa(s)</div>
+        </div>
+        ${ac?`<ul class="companions">${ac}</ul>`:""}
+      </div>`;
+    }).join("");
+  }catch(e){
+    if(login) document.getElementById("erro").textContent="Senha incorreta ou falha de conexão.";
+  }
+}
+function sair(){senha="";document.getElementById("senha").value="";document.getElementById("painel").classList.add("hidden");document.getElementById("login").classList.remove("hidden")}
+document.getElementById("senha").addEventListener("keydown",e=>{if(e.key==="Enter")entrar()});
+</script>
+</body></html>
