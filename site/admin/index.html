@@ -2,93 +2,134 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin • Chá do Santiago</title>
-<meta name="theme-color" content="#29441f">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Confirmados • Chá do Santiago</title>
+<meta name="theme-color" content="#31452d">
 <style>
-:root{--bg:#f7f4ea;--card:#fffdf8;--green:#29441f;--sage:#8a9974;--ink:#27341f;--muted:#6d7465;--line:#ddd8c9;--danger:#a53c35}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-.wrap{max-width:980px;margin:auto;padding:28px 18px 60px}h1,h2{font-family:Georgia,serif;color:var(--green)}h1{margin-bottom:4px}.sub{color:var(--muted)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;margin:18px 0;box-shadow:0 8px 30px rgba(41,68,31,.05)}
-.login{max-width:460px;margin:60px auto}.row{display:flex;gap:10px;align-items:center}
-input,button{font:inherit}input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:white}
-button{border:0;border-radius:999px;padding:12px 16px;cursor:pointer}.primary{background:var(--green);color:white;font-weight:700}.secondary{background:#edf0e6;color:var(--green)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:#f1f0e8;border-radius:16px;padding:16px;text-align:center}.num{font-size:28px;font-weight:800;color:var(--green)}
-.item{border-top:1px solid var(--line);padding:14px 0}.item:first-child{border-top:0}.head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.name{font-weight:800}.meta{color:var(--muted);font-size:14px}.companions{margin:8px 0 0 18px;color:#46513e}.badge{font-size:12px;background:#edf0e6;padding:4px 8px;border-radius:999px;color:var(--green)}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center}.msg{color:var(--danger);margin-top:10px}.hidden{display:none}
-@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.head{flex-direction:column}.row{flex-direction:column}.row button{width:100%}}
+:root{
+  --bg:#f6f2e8;--paper:#fffdf8;--green:#31452d;--sage:#809174;--blue:#c4dceb;
+  --ink:#253022;--muted:#70766b;--line:#dfdbcf;--soft:#eef0e8;--bad:#a24b43;
+  --shadow:0 14px 38px rgba(49,69,45,.08)
+}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:24px 16px 70px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--green)}
+h1{margin:4px 0 4px;font-size:clamp(34px,6vw,48px)}.sub{color:var(--muted);line-height:1.5}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow);margin:16px 0}
+.login{max-width:460px;margin:70px auto}.row{display:flex;gap:10px;align-items:center}
+input,button{font:inherit}input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;outline:none}
+input:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(128,145,116,.14)}
+button{border:0;border-radius:999px;padding:12px 16px;cursor:pointer;font-weight:800}
+.primary{background:var(--green);color:#fff}.secondary{background:var(--soft);color:var(--green)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat{background:var(--soft);border:1px solid #e2ded3;border-radius:18px;padding:16px;text-align:center}
+.num{font-size:30px;font-weight:900;color:var(--green)}.lab{font-size:13px;color:var(--muted)}
+.visuals{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.vbox{background:#faf8f2;border:1px solid var(--line);border-radius:18px;padding:16px}
+.vtitle{font-weight:850;color:var(--green);margin-bottom:12px}.barrow{margin:11px 0}
+.barlabel{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:5px}
+.track{height:10px;border-radius:999px;background:#e7e4da;overflow:hidden}.fill{height:100%;border-radius:999px;background:var(--sage)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.search{min-width:240px}.item{border-top:1px solid var(--line);padding:15px 0}.item:first-child{border-top:0}
+.head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.name{font-weight:850}.meta{color:var(--muted);font-size:13px}
+.companions{margin:8px 0 0 18px;color:#46513e;padding:0}.badge{font-size:12px;background:var(--soft);padding:5px 8px;border-radius:999px;color:var(--green);white-space:nowrap}
+.msg{color:var(--bad);margin-top:10px}.hidden{display:none}.empty{color:var(--muted);padding:18px 0;text-align:center}
+@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}.visuals{grid-template-columns:1fr}.head{flex-direction:column}.row{flex-direction:column}.row button{width:100%}.toolbar{align-items:stretch}.search{width:100%}}
 </style>
 </head>
 <body><div class="wrap">
 <section id="login" class="card login">
-  <h1>Admin do Chá</h1>
-  <p class="sub">Digite a senha administrativa para ver os confirmados.</p>
-  <div class="row"><input id="senha" type="password" placeholder="Senha"><button class="primary" onclick="entrar()">Entrar</button></div>
+  <div class="sub">Painel privado</div>
+  <h1>Confirmados do Chá</h1>
+  <p class="sub">Digite a senha administrativa para abrir o painel visual.</p>
+  <div class="row"><input id="senha" type="password" placeholder="Senha administrativa"><button class="primary" onclick="entrar()">Entrar</button></div>
   <div id="erro" class="msg"></div>
 </section>
 
 <section id="painel" class="hidden">
   <div class="toolbar">
-    <div><h1>Chá do Santiago</h1><div class="sub">Lista de confirmados</div></div>
+    <div><div class="sub">Painel privado</div><h1>Chá do Santiago</h1><div class="sub">Resumo dos confirmados</div></div>
     <div><button class="secondary" onclick="carregar()">Atualizar</button> <button class="secondary" onclick="sair()">Sair</button></div>
   </div>
+
   <div class="card">
     <div class="stats">
-      <div class="stat"><div id="sConfirmacoes" class="num">0</div><div>confirmações</div></div>
-      <div class="stat"><div id="sPessoas" class="num">0</div><div>pessoas</div></div>
-      <div class="stat"><div id="sAdultos" class="num">0</div><div>adultos</div></div>
-      <div class="stat"><div id="sCriancas" class="num">0</div><div>crianças</div></div>
+      <div class="stat"><div id="sConfirmacoes" class="num">0</div><div class="lab">confirmações</div></div>
+      <div class="stat"><div id="sPessoas" class="num">0</div><div class="lab">pessoas</div></div>
+      <div class="stat"><div id="sAdultos" class="num">0</div><div class="lab">adultos</div></div>
+      <div class="stat"><div id="sCriancas" class="num">0</div><div class="lab">crianças</div></div>
     </div>
   </div>
+
+  <div class="visuals">
+    <div class="vbox">
+      <div class="vtitle">Faixa etária</div>
+      <div class="barrow"><div class="barlabel"><span>Adultos</span><b id="vAdultos">0</b></div><div class="track"><div id="bAdultos" class="fill" style="width:0"></div></div></div>
+      <div class="barrow"><div class="barlabel"><span>Crianças</span><b id="vCriancas">0</b></div><div class="track"><div id="bCriancas" class="fill" style="width:0"></div></div></div>
+    </div>
+    <div class="vbox">
+      <div class="vtitle">Distribuição</div>
+      <div class="barrow"><div class="barlabel"><span>Homens</span><b id="vHomens">0</b></div><div class="track"><div id="bHomens" class="fill" style="width:0"></div></div></div>
+      <div class="barrow"><div class="barlabel"><span>Mulheres</span><b id="vMulheres">0</b></div><div class="track"><div id="bMulheres" class="fill" style="width:0"></div></div></div>
+    </div>
+  </div>
+
   <div class="card">
-    <div class="toolbar"><h2 style="margin:0">Confirmados</h2><span id="atualizado" class="sub"></span></div>
+    <div class="toolbar">
+      <div><h2 style="margin:0">Lista de confirmados</h2><div id="atualizado" class="sub"></div></div>
+      <input id="busca" class="search" placeholder="Buscar nome..." oninput="render()">
+    </div>
     <div id="lista"></div>
   </div>
 </section>
 </div>
 <script>
 const API="https://boqtftbesaypalvfxkjd.supabase.co/functions/v1/rsvp-admin";
-let senha="";
+let senha="",dados=[];
 
 function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]))}
-function rotuloSexo(v){return v==="homem"?"Homem":v==="mulher"?"Mulher":"—"}
-function rotuloFaixa(v){return v==="adulto"?"Adulto":v==="crianca"?"Criança":"—"}
+function rs(v){return v==="homem"?"Homem":v==="mulher"?"Mulher":"—"}
+function rf(v){return v==="adulto"?"Adulto":v==="crianca"?"Criança":"—"}
+function pct(n,t){return t?Math.round((n/t)*100):0}
 
 async function entrar(){
   senha=document.getElementById("senha").value.trim();
   if(!senha){document.getElementById("erro").textContent="Digite a senha.";return}
   await carregar(true);
 }
-
 async function carregar(login=false){
   try{
     const r=await fetch(API,{headers:{"x-admin-key":senha}});
     const out=await r.json();
     if(!r.ok) throw new Error(out.error||"Falha ao carregar");
+    dados=out.confirmacoes||[];
     document.getElementById("erro").textContent="";
     document.getElementById("login").classList.add("hidden");
     document.getElementById("painel").classList.remove("hidden");
-    document.getElementById("sConfirmacoes").textContent=out.totais.confirmacoes;
-    document.getElementById("sPessoas").textContent=out.totais.pessoas;
-    document.getElementById("sAdultos").textContent=out.totais.adultos;
-    document.getElementById("sCriancas").textContent=out.totais.criancas;
-    document.getElementById("atualizado").textContent="Atualizado agora";
-    const lista=document.getElementById("lista");
-    lista.innerHTML=out.confirmacoes.map(r=>{
-      const ac=(r.acompanhantes||[]).map(a=>`<li><b>${esc(a.nome)}</b> · ${rotuloSexo(a.sexo)} · ${rotuloFaixa(a.faixa)}</li>`).join("");
-      return `<div class="item">
-        <div class="head">
-          <div><div class="name">${esc(r.nome)}</div><div class="meta">${rotuloSexo(r.sexo)} · ${rotuloFaixa(r.faixa)}</div></div>
-          <div class="badge">${Number(r.total_pessoas||1)} pessoa(s)</div>
-        </div>
-        ${ac?`<ul class="companions">${ac}</ul>`:""}
-      </div>`;
-    }).join("");
-  }catch(e){
-    if(login) document.getElementById("erro").textContent="Senha incorreta ou falha de conexão.";
-  }
+    const t=out.totais;
+    sConfirmacoes.textContent=t.confirmacoes;sPessoas.textContent=t.pessoas;sAdultos.textContent=t.adultos;sCriancas.textContent=t.criancas;
+    vAdultos.textContent=t.adultos;vCriancas.textContent=t.criancas;
+    bAdultos.style.width=pct(t.adultos,t.pessoas)+"%";bCriancas.style.width=pct(t.criancas,t.pessoas)+"%";
+    let homens=0,mulheres=0;
+    for(const r of dados){
+      if(r.sexo==="homem")homens++; if(r.sexo==="mulher")mulheres++;
+      for(const a of(r.acompanhantes||[])){if(a.sexo==="homem")homens++;if(a.sexo==="mulher")mulheres++;}
+    }
+    vHomens.textContent=homens;vMulheres.textContent=mulheres;
+    bHomens.style.width=pct(homens,homens+mulheres)+"%";bMulheres.style.width=pct(mulheres,homens+mulheres)+"%";
+    atualizado.textContent="Atualizado agora";
+    render();
+  }catch(e){if(login)document.getElementById("erro").textContent="Senha incorreta ou falha de conexão."}
 }
-function sair(){senha="";document.getElementById("senha").value="";document.getElementById("painel").classList.add("hidden");document.getElementById("login").classList.remove("hidden")}
+function render(){
+  const q=(document.getElementById("busca")?.value||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  const filtrados=dados.filter(r=>[r.nome,...(r.acompanhantes||[]).map(a=>a.nome)].join(" ").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").includes(q));
+  lista.innerHTML=filtrados.length?filtrados.map(r=>{
+    const ac=(r.acompanhantes||[]).map(a=>`<li><b>${esc(a.nome)}</b> · ${rs(a.sexo)} · ${rf(a.faixa)}</li>`).join("");
+    return `<div class="item"><div class="head"><div><div class="name">${esc(r.nome)}</div><div class="meta">${rs(r.sexo)} · ${rf(r.faixa)}</div></div><div class="badge">${Number(r.total_pessoas||1)} pessoa(s)</div></div>${ac?`<ul class="companions">${ac}</ul>`:""}</div>`;
+  }).join(""):'<div class="empty">Nenhum nome encontrado.</div>';
+}
+function sair(){senha="";dados=[];senhaEl=document.getElementById("senha");senhaEl.value="";painel.classList.add("hidden");login.classList.remove("hidden")}
 document.getElementById("senha").addEventListener("keydown",e=>{if(e.key==="Enter")entrar()});
 </script>
 </body></html>
