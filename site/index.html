@@ -12,7 +12,8 @@
 h1,h2{font-family:Georgia,serif;color:var(--green)}h1{font-size:42px;margin:8px 0 8px}.sub{color:var(--muted);line-height:1.55}
 .info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}.info div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;text-align:center;font-size:14px}
 .links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0 24px}.links a{text-decoration:none;color:var(--green);background:white;border:1px solid var(--line);padding:10px 14px;border-radius:999px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 8px 30px rgba(41,68,31,.05)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 8px 30px rgba(41,68,31,.05);margin-bottom:18px}
+.gifts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}.gift{background:#f1f0e8;border:1px solid #e4dfd1;border-radius:16px;padding:13px 14px;display:flex;gap:10px;align-items:flex-start}.gift b{display:block;color:var(--green)}.gift span{font-size:14px;color:var(--muted)}
 .row{display:grid;grid-template-columns:1.6fr 1fr 1fr auto;gap:10px;align-items:center;margin:10px 0}
 input,select,button{font:inherit}input,select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink)}
 button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}.primary{background:var(--green);color:white;font-weight:700;width:100%;font-size:17px;margin-top:18px}
@@ -20,7 +21,7 @@ button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}.primary{ba
 .note{background:#f0eee5;border-radius:16px;padding:14px 16px;color:#5d6355;font-size:14px;margin:16px 0}
 .msg{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;font-size:14px}.err{display:block;background:#fff0ee;color:var(--danger)}.ok{display:block;background:#edf6e9;color:#31552a}
 .small{font-size:12px;color:var(--muted);text-align:center;margin-top:18px}
-@media(max-width:680px){.info{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.row input{grid-column:1/-1}.row .remove{grid-column:2;justify-self:end}h1{font-size:34px}}
+@media(max-width:680px){.info{grid-template-columns:1fr}.gifts{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.row input{grid-column:1/-1}.row .remove{grid-column:2;justify-self:end}h1{font-size:34px}}
 </style>
 </head>
 <body>
@@ -30,16 +31,35 @@ button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}.primary{ba
 <h1>Chá do Santiago</h1>
 <div class="sub">10 de outubro de 2026 • almoço das 12h30 às 14h30<br>Marine Home & Resort, Cachoeira do Bom Jesus</div>
 </section>
+
 <div class="info">
 <div><b>📅 10/10/2026</b><br>sábado</div>
 <div><b>🕧 12h30–14h30</b><br>podem chegar um pouco antes</div>
 <div><b>📍 Marine Home & Resort</b><br>Av. Luiz Boiteux Piazza, 4413</div>
 </div>
+
 <div class="links">
 <a href="https://www.google.com/maps/search/?api=1&query=Marine%20Home%20%26%20Resort%20Av.%20Luiz%20Boiteux%20Piazza%204413%20Florianopolis" target="_blank" rel="noopener">Google Maps</a>
 <a href="https://www.waze.com/ul?q=Marine%20Home%20%26%20Resort%20Av.%20Luiz%20Boiteux%20Piazza%204413%20Florianopolis&navigate=yes" target="_blank" rel="noopener">Waze</a>
 <a href="https://eventogra.ph/8uDTChGK" target="_blank" rel="noopener">Fotos do Chá 📸</a>
 </div>
+
+<div class="card">
+<h2 style="margin-top:0">Sugestões de presentes 🎁</h2>
+<p class="sub">Para quem quiser levar um mimo para o Santiago, estas são algumas sugestões:</p>
+<div class="gifts">
+  <div class="gift"><div>🧷</div><div><b>Fraldas Pampers</b><span>Tamanhos M, G, GG ou XG</span></div></div>
+  <div class="gift"><div>🧺</div><div><b>Paninhos de boca</b><span>Itens de uso diário</span></div></div>
+  <div class="gift"><div>👶</div><div><b>Babadores</b><span>Qualquer modelo infantil</span></div></div>
+  <div class="gift"><div>🧻</div><div><b>Lenços umedecidos</b><span>Pacotes para bebê</span></div></div>
+  <div class="gift"><div>☁️</div><div><b>Algodão quadrado</b><span>Para higiene do bebê</span></div></div>
+  <div class="gift"><div>🧴</div><div><b>Pomada para assadura</b><span>Uso infantil</span></div></div>
+  <div class="gift"><div>🫧</div><div><b>Sabonete</b><span>Em barra ou líquido</span></div></div>
+  <div class="gift"><div>🛁</div><div><b>Toalha de banho com capuz</b><span>Infantil</span></div></div>
+  <div class="gift"><div>🧸</div><div><b>Pano de corpo</b><span>Para o dia a dia</span></div></div>
+</div>
+</div>
+
 <div class="card">
 <h2 style="margin-top:0">Você vem?</h2>
 <p class="sub">Escreva seu nome, marque as opções e inclua cada pessoa que vem com você.</p>
@@ -55,7 +75,7 @@ button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}.primary{ba
 <div id="msg" class="msg"></div>
 <button id="submit" class="primary" type="button" onclick="enviar()">Confirmar presença</button>
 </div>
-<div class="small">Confirmação segura e independente dos créditos do Base44.</div>
+<div class="small">Chá do Santiago</div>
 </div>
 <script>
 const API="https://boqtftbesaypalvfxkjd.supabase.co/functions/v1/rsvp";
