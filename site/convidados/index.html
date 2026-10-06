@@ -17,11 +17,12 @@ input{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;ba
 button{border:0;border-radius:999px;padding:13px 17px;cursor:pointer;font-weight:800}.primary{background:var(--green);color:#fff}.secondary{background:var(--soft);color:var(--green)}
 .hidden{display:none}.msg{margin-top:12px;color:var(--bad);font-size:14px}
 .toolbar{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:var(--soft);border-radius:18px;padding:16px;text-align:center}.num{font-size:30px;font-weight:900;color:var(--green)}.lab{font-size:13px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.stat{background:var(--soft);border-radius:18px;padding:16px;text-align:center}.num{font-size:30px;font-weight:900;color:var(--green)}.lab{font-size:13px;color:var(--muted)}
 .listhead{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
 .search{max-width:280px;text-align:left;font-size:16px;letter-spacing:0}.item{padding:15px 0;border-top:1px solid var(--line)}.item:first-child{border-top:0}
 .head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.name{font-weight:850}.meta{font-size:13px;color:var(--muted)}.badge{font-size:12px;background:var(--soft);padding:5px 8px;border-radius:999px;white-space:nowrap}
 ul{margin:8px 0 0 20px;padding:0;color:#46513e}
+@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.head{flex-direction:column}.pinrow{flex-direction:column}.pinrow button{width:100%}.search{width:100%;max-width:none}}
 </style>
 </head>
@@ -50,7 +51,10 @@ ul{margin:8px 0 0 20px;padding:0;color:#46513e}
         <div class="stat"><div id="sPessoas" class="num">0</div><div class="lab">pessoas</div></div>
         <div class="stat"><div id="sAdultos" class="num">0</div><div class="lab">adultos</div></div>
         <div class="stat"><div id="sCriancas" class="num">0</div><div class="lab">crianças</div></div>
+        <div class="stat"><div id="sHomens" class="num">0</div><div class="lab">homens</div></div>
+        <div class="stat"><div id="sMulheres" class="num">0</div><div class="lab">mulheres</div></div>
       </div>
+      <div id="sexoAviso" class="sub" style="margin-top:10px;display:none"></div>
     </div>
 
     <div class="card">
@@ -92,6 +96,18 @@ async function carregar(login=false){
     gate.classList.add("hidden");painel.classList.remove("hidden");
     sConfirmacoes.textContent=out.totais.confirmacoes;sPessoas.textContent=out.totais.pessoas;
     sAdultos.textContent=out.totais.adultos;sCriancas.textContent=out.totais.criancas;
+    let homens=0,mulheres=0,semSexo=0;
+    for(const reg of dados){
+      if(reg.sexo==="homem") homens++; else if(reg.sexo==="mulher") mulheres++; else semSexo++;
+      for(const a of(reg.acompanhantes||[])){
+        if(a.sexo==="homem") homens++; else if(a.sexo==="mulher") mulheres++; else semSexo++;
+      }
+    }
+    sHomens.textContent=homens;sMulheres.textContent=mulheres;
+    if(semSexo>0){
+      sexoAviso.style.display="block";
+      sexoAviso.textContent=semSexo+" pessoa(s) de cadastro antigo estão sem Homem/Mulher informado.";
+    }else sexoAviso.style.display="none";
     atualizado.textContent="Atualizado agora";
     render();
   }catch(e){if(login)erro.textContent="Não foi possível carregar a lista agora."}
