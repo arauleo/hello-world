@@ -36,7 +36,7 @@ h1{font-size:clamp(44px,8vw,70px);line-height:.95;margin:18px 0 10px;font-weight
   background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:21px;
   padding:17px;text-align:center;box-shadow:0 8px 24px rgba(49,69,45,.04)
 }
-.event .ico{font-size:22px}.event b{display:block;color:var(--green);margin:6px 0 2px}.event small{color:var(--muted);line-height:1.45}
+.event .ico{font-size:22px}.date-ico{width:34px;height:34px;margin:0 auto 3px;border:1px solid #cfd5c8;border-radius:9px;overflow:hidden;background:#fff;display:grid;grid-template-rows:13px 1fr;box-shadow:0 3px 9px rgba(49,69,45,.05)}.date-ico span{background:var(--green);color:#fff;font-size:8px;font-weight:900;letter-spacing:.08em;line-height:13px}.date-ico strong{font-size:15px;line-height:20px;color:var(--green)}.event b{display:block;color:var(--green);margin:6px 0 2px}.event small{color:var(--muted);line-height:1.45}
 .quick{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:8px 0 28px}
 .quick a{
   background:#fff;border:1px solid var(--line);padding:11px 15px;border-radius:999px;
@@ -75,18 +75,18 @@ button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}
 .gift .gico{font-size:22px}.gift b{display:block;color:var(--green);margin:6px 0 3px}
 .gift span{font-size:13px;color:var(--muted);line-height:1.4}
 .footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 8px}
-.mobile-cta{
-  display:none;position:fixed;left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:20;
-  text-decoration:none;background:var(--green);color:#fff;text-align:center;font-weight:850;
-  padding:14px 18px;border-radius:999px;box-shadow:0 13px 30px rgba(37,48,34,.28)
-}
 @media(max-width:760px){
-  .wrap{padding:14px 14px 92px}.hero{padding-top:26px}.event-grid{grid-template-columns:1fr}
+  .wrap{padding:10px 12px 46px}.hero{padding:24px 10px 12px}
+  .hero p{font-size:15px;line-height:1.5}.decor{margin-top:10px}
+  .event-grid{grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+  .event{padding:14px 12px;border-radius:18px}.event:nth-child(3){grid-column:1/-1}
+  .quick{gap:8px;margin:8px 0 20px}.quick a{padding:10px 12px;font-size:14px}
   .gift-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr 1fr}
   .form-row input{grid-column:1/-1}.form-row .remove{grid-column:2;justify-self:end}
-  .card{border-radius:23px}.mobile-cta{display:block}
+  .card{border-radius:22px;padding:20px;margin:14px 0}.card h2{font-size:28px}
+  .gift{min-height:96px;padding:13px}.gift b{font-size:15px}.gift span{font-size:12.5px}
 }
-@media(max-width:480px){.gift-grid{grid-template-columns:1fr}.quick a{flex:1;text-align:center}}
+@media(max-width:380px){.gift-grid{grid-template-columns:1fr}.quick a{flex:1;text-align:center}}
 </style>
 </head>
 <body>
@@ -99,7 +99,7 @@ button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}
   </header>
 
   <section class="event-grid" aria-label="Informações do evento">
-    <div class="event"><div class="ico">📅</div><b>10 de outubro de 2026</b><small>Sábado</small></div>
+    <div class="event"><div class="date-ico" aria-hidden="true"><span>OUT</span><strong>10</strong></div><b>10 de outubro de 2026</b><small>Sábado</small></div>
     <div class="event"><div class="ico">🕧</div><b>12h30 às 14h30</b><small>O almoço será servido nesse período. Podem chegar um pouco antes.</small></div>
     <div class="event"><div class="ico">📍</div><b>Marine Home & Resort</b><small>Av. Luiz Boiteux Piazza, 4413<br>Cachoeira do Bom Jesus</small></div>
   </section>
@@ -150,7 +150,6 @@ button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}
   <footer class="footer">Esperamos vocês para celebrar com a gente. 🌿</footer>
 </div>
 
-<a class="mobile-cta" href="#confirmar">Confirmar presença</a>
 
 <script>
 const API="https://boqtftbesaypalvfxkjd.supabase.co/functions/v1/rsvp";
@@ -173,7 +172,7 @@ async function enviar(){
     const res=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({nome,sexo,faixa,acompanhantes})});
     const out=await res.json();
     if(!res.ok)show(out.error||'Não foi possível confirmar.');
-    else{show('Presença confirmada! 💛','ok');b.style.display='none';document.querySelector('.mobile-cta').style.display='none';}
+    else{show('Presença confirmada! 💛','ok');b.style.display='none';}
   }catch(e){show('Falha de conexão. Tente novamente em instantes.')}
   finally{b.disabled=false;if(b.style.display!=='none')b.textContent='Confirmar presença'}
 }
