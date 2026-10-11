@@ -1,181 +1,119 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Chá do Santiago</title>
-<meta name="theme-color" content="#66785d">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vôlei & Futevôlei do Santi</title><meta name="theme-color" content="#111111">
 <style>
-:root{
-  --bg:#f6f2e8; --paper:#fffdf8; --green:#31452d; --sage:#809174;
-  --blue:#c4dceb; --ink:#253022; --muted:#70766b; --line:#dfdbcf;
-  --soft:#eef0e8; --danger:#a24b43; --shadow:0 16px 42px rgba(49,69,45,.09);
-}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{
-  margin:0;color:var(--ink);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  background:
-    radial-gradient(circle at 10% 0%,rgba(196,220,235,.34),transparent 28%),
-    radial-gradient(circle at 92% 5%,rgba(128,145,116,.18),transparent 22%),
-    var(--bg);
-}
-a{color:inherit}.wrap{max-width:940px;margin:auto;padding:24px 18px 96px}
-.hero{text-align:center;padding:34px 12px 18px}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;
-  background:rgba(255,255,255,.72);border:1px solid var(--line);
-  color:var(--green);font-size:12px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;
-}
-h1,h2{font-family:Georgia,"Times New Roman",serif;color:var(--green)}
-h1{font-size:clamp(44px,8vw,70px);line-height:.95;margin:18px 0 10px;font-weight:600}
-.hero p{max-width:650px;margin:0 auto;color:var(--muted);line-height:1.65;font-size:16px}
-.decor{font-size:25px;margin-top:14px;letter-spacing:8px;opacity:.78}
-.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
-.event{
-  background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:21px;
-  padding:17px;text-align:center;box-shadow:0 8px 24px rgba(49,69,45,.04)
-}
-.event .ico{font-size:22px}.date-ico{width:34px;height:34px;margin:0 auto 3px;border:1px solid #cfd5c8;border-radius:9px;overflow:hidden;background:#fff;display:grid;grid-template-rows:13px 1fr;box-shadow:0 3px 9px rgba(49,69,45,.05)}.date-ico span{background:var(--green);color:#fff;font-size:8px;font-weight:900;letter-spacing:.08em;line-height:13px}.date-ico strong{font-size:15px;line-height:20px;color:var(--green)}.event b{display:block;color:var(--green);margin:6px 0 2px}.event small{color:var(--muted);line-height:1.45}
-.quick{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:8px 0 28px}
-.quick a{
-  background:#fff;border:1px solid var(--line);padding:11px 15px;border-radius:999px;
-  text-decoration:none;font-weight:750;color:var(--green);box-shadow:0 5px 14px rgba(49,69,45,.04)
-}
-.quick a:hover{transform:translateY(-1px)}
-.card{
-  background:var(--paper);border:1px solid var(--line);border-radius:28px;
-  padding:clamp(20px,4vw,30px);box-shadow:var(--shadow);margin:18px 0
-}
-.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:var(--sage)}
-.card h2{font-size:30px;margin:6px 0}.sub{color:var(--muted);line-height:1.58;margin:0 0 18px}
-.form-row{display:grid;grid-template-columns:1.7fr 1fr 1fr auto;gap:10px;align-items:center;margin:10px 0}
-input,select,button{font:inherit}
-input,select{
-  width:100%;padding:14px;border:1px solid #d8d3c7;border-radius:14px;
-  background:#fff;color:var(--ink);outline:none
-}
-input:focus,select:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(128,145,116,.14)}
-button{cursor:pointer;border:0;border-radius:999px;padding:13px 18px}
-.primary{
-  background:var(--green);color:#fff;font-weight:850;width:100%;font-size:17px;
-  margin-top:16px;box-shadow:0 9px 20px rgba(49,69,45,.21)
-}
-.primary:disabled{opacity:.65;cursor:wait}.secondary{background:var(--soft);color:var(--green);font-weight:750}
-.remove{background:transparent;color:#999;font-size:22px;padding:8px}
-.note{background:#f2efe5;border-radius:16px;padding:13px 15px;color:#5f655a;font-size:14px;margin:15px 0}
-.msg{display:none;margin-top:14px;padding:12px 14px;border-radius:13px;font-size:14px}
-.err{display:block;background:#fff0ed;color:var(--danger)}.ok{display:block;background:#edf6e9;color:#31552a}
-.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
-.gift{
-  background:var(--soft);border:1px solid #e2ded3;border-radius:18px;padding:14px;min-height:105px;
-  transition:transform .15s ease,box-shadow .15s ease
-}
-.gift:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(49,69,45,.06)}
-.gift .gico{font-size:22px}.gift b{display:block;color:var(--green);margin:6px 0 3px}
-.gift span{font-size:13px;color:var(--muted);line-height:1.4}
-.footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 8px}
-@media(max-width:760px){
-  .wrap{padding:10px 12px 46px}.hero{padding:24px 10px 12px}
-  .hero p{font-size:15px;line-height:1.5}.decor{margin-top:10px}
-  .event-grid{grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
-  .event{padding:14px 12px;border-radius:18px}.event:nth-child(3){grid-column:1/-1}
-  .quick{gap:8px;margin:8px 0 20px}.quick a{padding:10px 12px;font-size:14px}
-  .gift-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr 1fr}
-  .form-row input{grid-column:1/-1}.form-row .remove{grid-column:2;justify-self:end}
-  .card{border-radius:22px;padding:20px;margin:14px 0}.card h2{font-size:28px}
-  .gift{min-height:96px;padding:13px}.gift b{font-size:15px}.gift span{font-size:12.5px}
-}
-@media(max-width:380px){.gift-grid{grid-template-columns:1fr}.quick a{flex:1;text-align:center}}
+:root{--bg:#f6f1ea;--paper:#fffaf4;--ink:#111;--orange:#e7891b;--muted:#6d665f;--line:#ddd3c9;--soft:#f0e9e0;--shadow:0 16px 42px rgba(0,0,0,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:0 16px 60px}.hero{position:relative;text-align:center;padding:48px 14px 26px;overflow:hidden}
+.flags{display:flex;justify-content:center;gap:5px;margin-bottom:22px}.flag{width:34px;height:28px;clip-path:polygon(0 0,100% 0,50% 100%)}.f1{background:#111}.f2{background:var(--orange)}.f3{background:repeating-linear-gradient(45deg,#111 0 4px,#fff 4px 8px)}.f4{background:radial-gradient(#111 1px,transparent 1.5px);background-size:7px 7px;background-color:#fff}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-weight:900;font-size:13px}.hero h1{font-size:clamp(48px,10vw,86px);line-height:.9;margin:10px 0 8px;font-weight:1000}.hero h1 span{color:var(--orange)}.hero p{max-width:650px;margin:0 auto;color:var(--muted);line-height:1.6;font-size:17px}.balls{font-size:28px;margin-top:16px;letter-spacing:10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:var(--shadow);margin:16px 0}
+.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.event{text-align:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:17px}.event b{display:block;font-size:18px;margin:6px 0}.event small{color:var(--muted);line-height:1.45}.ico{font-size:24px}
+.callout{background:#111;color:#fff;border-radius:20px;padding:19px 20px;text-align:center;margin:18px 0}.callout b{color:var(--orange);font-size:21px}.callout span{display:block;margin-top:5px;color:#eee}
+.links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px 0 22px}.links a{text-decoration:none;border:1px solid var(--line);background:#fff;padding:11px 15px;border-radius:999px;font-weight:800}
+.kicker{color:var(--orange);font-weight:900;text-transform:uppercase;letter-spacing:.14em;font-size:12px}.card h2{font-size:32px;margin:5px 0 8px}.sub{color:var(--muted);line-height:1.55;margin:0 0 18px}
+.form-row{display:grid;grid-template-columns:1.7fr 1fr 1fr auto;gap:10px;align-items:center;margin:10px 0}input,select,button{font:inherit}input,select{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff;outline:none}input:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(231,137,27,.14)}
+button{border:0;border-radius:999px;padding:13px 18px;cursor:pointer;font-weight:850}.primary{background:#111;color:#fff;width:100%;font-size:17px;margin-top:15px}.secondary{background:var(--soft);color:#111}.remove{background:transparent;color:#999;font-size:22px;padding:8px}
+.note{background:#fff2df;border-radius:15px;padding:13px 15px;color:#6a563f;font-size:14px;margin:14px 0}.msg{display:none;margin-top:14px;padding:12px 14px;border-radius:13px}.err{display:block;background:#fff0ed;color:#9b4038}.ok{display:block;background:#edf6e9;color:#31552a}
+.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gift{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;min-height:100px}.gift b{display:block;margin:6px 0 3px}.gift span{color:var(--muted);font-size:13px}
+.pix{display:none;margin-top:18px;background:#fff;border:2px solid #111;border-radius:22px;padding:20px;text-align:center}.pix.show{display:block}.pix img{width:min(240px,70vw);height:auto;border-radius:12px;background:#fff}.pix .value{font-size:30px;font-weight:1000;margin:8px 0 3px}.pixcode{width:100%;font-size:12px;letter-spacing:0;text-align:left;word-break:break-all;background:#f6f2ed;border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:10px}
+.footer{text-align:center;color:var(--muted);padding:24px 0 8px;font-size:13px}
+@media(max-width:760px){.wrap{padding:0 12px 44px}.hero{padding-top:34px}.event-grid{grid-template-columns:1fr 1fr}.event:nth-child(3){grid-column:1/-1}.form-row{grid-template-columns:1fr 1fr}.form-row input{grid-column:1/-1}.form-row .remove{grid-column:2;justify-self:end}.gifts{grid-template-columns:1fr 1fr}.card{padding:20px;border-radius:22px}.card h2{font-size:28px}}
+@media(max-width:420px){.gifts{grid-template-columns:1fr}.links a{flex:1;text-align:center}}
 </style>
 </head>
-<body>
-<div class="wrap">
-  <header class="hero">
-    <div class="pill">🌿 Chá do bebê</div>
-    <h1>Santiago</h1>
-    <p>Estamos preparando um dia especial para celebrar a chegada do Santiago e queremos muito dividir esse momento com vocês.</p>
-    <div class="decor">🦕 · ☁️ · 🌿</div>
-  </header>
+<body><div class="wrap">
+<header class="hero">
+  <div class="flags"><div class="flag f1"></div><div class="flag f2"></div><div class="flag f3"></div><div class="flag f4"></div><div class="flag f1"></div><div class="flag f2"></div></div>
+  <div class="eyebrow">Vem aí um</div>
+  <h1><span>VÔLEI</span> &<br>FUTEVÔLEI</h1>
+  <p>Para comemorar a chegada do nosso pequeno, vamos fazer o que gostamos: jogar, reunir quem amamos e passar o dia juntos.</p>
+  <div class="balls">🏐 ⚽</div>
+</header>
 
-  <section class="event-grid" aria-label="Informações do evento">
-    <div class="event"><div class="date-ico" aria-hidden="true"><span>OUT</span><strong>10</strong></div><b>10 de outubro de 2026</b><small>Sábado</small></div>
-    <div class="event"><div class="ico">🕧</div><b>12h30 às 14h30</b><small>O almoço será servido nesse período. Podem chegar um pouco antes.</small></div>
-    <div class="event"><div class="ico">📍</div><b>Marine Home & Resort</b><small>Av. Luiz Boiteux Piazza, 4413<br>Cachoeira do Bom Jesus</small></div>
-  </section>
+<section class="callout"><b>Vista a camiseta do seu time preferido 🖤</b><span>e venha curtir esse dia com a gente!</span></section>
 
-  <nav class="quick" aria-label="Atalhos">
-    <a href="https://www.google.com/maps/search/?api=1&query=Marine%20Home%20%26%20Resort%20Av.%20Luiz%20Boiteux%20Piazza%204413%20Florianopolis" target="_blank" rel="noopener">📍 Google Maps</a>
-    <a href="https://www.waze.com/ul?q=Marine%20Home%20%26%20Resort%20Av.%20Luiz%20Boiteux%20Piazza%204413%20Florianopolis&navigate=yes" target="_blank" rel="noopener">🚙 Waze</a>
-    <a href="https://eventogra.ph/8uDTChGK" target="_blank" rel="noopener">📸 Fotos do Chá</a>
-  </nav>
+<section class="event-grid">
+  <div class="event"><div class="ico">📅</div><b>18 de outubro</b><small>Domingo • 2026</small></div>
+  <div class="event"><div class="ico">⏰</div><b>11h às 19h</b><small>Um dia inteiro de esporte e encontro</small></div>
+  <div class="event"><div class="ico">📍</div><b>2 Play Arena</b><small>R. Henrique Boiteux, 206<br>Estreito • Florianópolis</small></div>
+</section>
 
-  <section class="card" id="confirmar">
-    <div class="kicker">Confirmação de presença</div>
-    <h2>Você vem? 💛</h2>
-    <p class="sub">Preencha seus dados e adicione cada acompanhante. Cada pessoa deve aparecer em apenas uma confirmação.</p>
+<nav class="links">
+  <a href="https://www.google.com/maps/search/?api=1&query=2%20Play%20Arena%20Rua%20Henrique%20Boiteux%20206%20Florianopolis" target="_blank" rel="noopener">📍 Google Maps</a>
+  <a href="https://www.waze.com/ul?q=2%20Play%20Arena%20Rua%20Henrique%20Boiteux%20206%20Florianopolis&navigate=yes" target="_blank" rel="noopener">🚙 Waze</a>
+</nav>
 
-    <div class="form-row">
-      <input id="nome" placeholder="Seu nome completo" autocomplete="name">
-      <select id="sexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select>
-      <select id="faixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select>
-      <span></span>
-    </div>
+<section class="card" id="confirmar">
+  <div class="kicker">Confirmação de presença</div>
+  <h2>Vai jogar com a gente?</h2>
+  <p class="sub">Preencha seus dados e, se vier acompanhado, adicione cada pessoa. Depois da confirmação será gerado o Pix de <b>R$ 20</b>.</p>
+  <div class="form-row">
+    <input id="nome" placeholder="Seu nome completo" autocomplete="name">
+    <select id="sexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select>
+    <select id="faixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select>
+    <span></span>
+  </div>
+  <div id="acomp"></div>
+  <button class="secondary" type="button" onclick="addAcomp()">＋ Adicionar acompanhante</button>
+  <div class="note">Cada pessoa deve aparecer em apenas uma confirmação. Confirme até uma semana antes do evento.</div>
+  <div id="msg" class="msg"></div>
+  <button id="submit" class="primary" type="button" onclick="enviar()">Confirmar e gerar Pix de R$ 20</button>
 
-    <div id="acomp"></div>
-    <button class="secondary" type="button" onclick="addAcomp()">＋ Adicionar acompanhante</button>
-    <div class="note">Preencha nome, Homem/Mulher e Adulto/Criança de todos os acompanhantes antes de confirmar.</div>
-    <div id="msg" class="msg" role="status"></div>
-    <button id="submit" class="primary" type="button" onclick="enviar()">Confirmar presença</button>
-  </section>
+  <div id="pixBox" class="pix">
+    <div class="kicker">Pagamento</div>
+    <h2 style="margin-bottom:4px">Presença registrada ✓</h2>
+    <p class="sub">Para concluir, faça o Pix abaixo. O pagamento será conferido pela organização.</p>
+    <img alt="QR Code Pix de R$ 20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeoAAAHqAQAAAADjFjCXAAAEXklEQVR4nO2dQW7rOAyGP44NdCkDOUCPIt9gzvSO9G5gHSUHKCAvC8jgLChZ7ptd7EGbCblI48QfFAMEJf4UVVFOWPrrDA2OO+6444477rjjjl+LS7XR3pGmTWRe66XMAKwiMq/t1vm60R1/NXy0P3EBWG9A+Bgl3kdI7wXLNZKAwlAEhgKAXDK646+Nrz2kVUfUZRUhiQhRCyLv5m+IyHjx6I6/Fj7+ca1pHgppAqJuo8R8K7BOFvWU9dLRHXccQOZQ6ovIm0IokCYQmUDm/3Z0x18LD6q6ALqwiS7rm122CXfQw9SrWi4e3fHXwqsnJcsOBiTe31RiviEx3+xLexd/3wA2uXB0x18TN6/rZTFNE6Ksm5DePwVzs/ApmqYBCF8raE/97I5/F46qqhL3STPaZbX2xVA/W4IqMdf7dHnqZ3f8u/A91g0qhAysEzVpXW9FWSc0/f0hsN6KVKFuKK7XOX7CLKQRCsQMFs0sfei35EHbfaqquWIe6xx/zOpUmgFCsQRVF/O6Qe2dzbp5UNU82KzrXuf4WVzmXRtJVnjYWiIBVNEktOQiyZt+wU+O7vir4S1oMaguodASiRr1jslFHrTpenty8dTP7vh34Qevs3WdOReDVq/LgOWweajKsc+wjp/Dm3KSAUJdvh1fuoex39J0Ffc6xx+znsP23LT7X0tpQZdQ7IUaCd3rHH/UqvuEQpVPdiGlyycmC3sO6/hF+DGbOMQ6syaa0ISUo/+51zl+Eo/6KSLvpe5gj5a+for+mqAt6Qo29dZIeN3ojr8Y3vaczKCsIwpbq5KtE0LYRtvQmWZBk4CmKV80uuOvibfahLZUoQsk7JX+rpzonmG4Xuf443ZIWoE9S92VuyYL6xKaVBybfOxe5/hjdshhLTfNQC3B0tSUDCauWIE2uNc5fsp2xbdVJPKwi8aFuqu9pw/NO93rHD+LW7Nh1M/WnsixNgG0RDbmQfWXV/8dP2e1IqatGAZQ5TubelV7wKuliuAqseNnrKokacrW7A8hI1E3UQCJd9m7KgYVU4l/exe246esxrR9p4kFt7DnFZa5QlOJCy2R9Vjn+KPWS2Btrm37AOo2umO5v5clfIZ1/IT19LWu65os1/W6tvGpIV6Hdfwc/qVbR7tAXPt2DlJx31oMuHLi+Bk7bDLZ+1wPW9Zjm3U59I2FJvG51zn+ON5VErv8JaOdqUNt2TnWwYh5P2fnJ/x4x58ONw2k9YINhTRlpMonJqmosE5gO03WW8Has68Y3fGXxuuUCsS8iepdxPoRY96kB8Eun8h84eiOvxh+7NbptQk7K6xXX/tngK/rHL8eH9T6rON9PGy3k7mfZIev6xw/Y/86IRY20aigrEMRO04sfIwQygghQ1y2hj31szv+3Xgr8pulaRPSBKr38bDnzuIf/STPn/HjHX9OPImInTws8qYy79pcelc9Hmxia739AJQf8eMdfzZc/L/XOe6444477rjjjv8v8H8A0r+/oNNjbNEAAAAASUVORK5CYII=">
+    <div class="value">R$ 20,00</div>
+    <div><b>Chave Pix:</b> (48) 99998-0127</div>
+    <button class="secondary" style="margin-top:12px" onclick="copiarPix()">Copiar código Pix</button>
+    <div id="pixCode" class="pixcode"></div>
+  </div>
+</section>
 
-  <section class="card">
-    <div class="kicker">Para o Santiago</div>
-    <h2>Sugestões de presentes 🎁</h2>
-    <p class="sub">Se quiserem levar um mimo, separamos algumas sugestões úteis para os primeiros meses.</p>
+<section class="card">
+  <div class="kicker">Para o Santi</div>
+  <h2>Sugestões de presentes 🎁</h2>
+  <p class="sub">Se quiser levar um mimo além de participar do dia, estas são algumas sugestões úteis.</p>
+  <div class="gifts">
+    <div class="gift">🧷<b>Fraldas Pampers</b><span>M, G, GG ou XG</span></div>
+    <div class="gift">🧺<b>Paninhos de boca</b><span>Itens de uso diário</span></div>
+    <div class="gift">👶<b>Babadores</b><span>Qualquer modelo infantil</span></div>
+    <div class="gift">🧻<b>Lenços umedecidos</b><span>Pacotes para bebê</span></div>
+    <div class="gift">☁️<b>Algodão quadrado</b><span>Para higiene do bebê</span></div>
+    <div class="gift">🧴<b>Pomada para assadura</b><span>Uso infantil</span></div>
+    <div class="gift">🫧<b>Sabonete</b><span>Em barra ou líquido</span></div>
+    <div class="gift">🛁<b>Toalha com capuz</b><span>Toalha de banho infantil</span></div>
+    <div class="gift">🧸<b>Pano de corpo</b><span>Para o dia a dia</span></div>
+  </div>
+</section>
 
-    <div class="gift-grid">
-      <div class="gift"><div class="gico">🧷</div><b>Fraldas Pampers</b><span>Tamanhos M, G, GG ou XG</span></div>
-      <div class="gift"><div class="gico">🧺</div><b>Paninhos de boca</b><span>Itens de uso diário</span></div>
-      <div class="gift"><div class="gico">👶</div><b>Babadores</b><span>Qualquer modelo infantil</span></div>
-      <div class="gift"><div class="gico">🧻</div><b>Lenços umedecidos</b><span>Pacotes para bebê</span></div>
-      <div class="gift"><div class="gico">☁️</div><b>Algodão quadrado</b><span>Para higiene do bebê</span></div>
-      <div class="gift"><div class="gico">🧴</div><b>Pomada para assadura</b><span>Uso infantil</span></div>
-      <div class="gift"><div class="gico">🫧</div><b>Sabonete</b><span>Em barra ou líquido</span></div>
-      <div class="gift"><div class="gico">🛁</div><b>Toalha com capuz</b><span>Toalha de banho infantil</span></div>
-      <div class="gift"><div class="gico">🧸</div><b>Pano de corpo</b><span>Para o dia a dia</span></div>
-    </div>
-  </section>
-
-  <footer class="footer">Esperamos vocês para celebrar com a gente. 🌿</footer>
+<footer class="footer">Sua presença tornará esse dia ainda mais especial. 🖤🧡</footer>
 </div>
-
-
 <script>
-const API="https://boqtftbesaypalvfxkjd.supabase.co/functions/v1/rsvp";
-function addAcomp(){
-  const d=document.createElement('div'); d.className='form-row acomp';
-  d.innerHTML='<input class="anome" placeholder="Nome do acompanhante"><select class="asexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select><select class="afaixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select><button class="remove" type="button" aria-label="Remover acompanhante" onclick="this.parentElement.remove()">×</button>';
-  document.getElementById('acomp').appendChild(d);
-}
-function show(t,type='err'){
-  const m=document.getElementById('msg');m.textContent=t;m.className='msg '+type;
-  m.scrollIntoView({behavior:'smooth',block:'nearest'})
-}
+const API="https://boqtftbesaypalvfxkjd.supabase.co/functions/v1/rsvp-volei";
+const PIX="00020126570014BR.GOV.BCB.PIX0114+55489999801270217VOLEI E FUTEVOLEI520400005303986540520.005802BR5905SANTI6013FLORIANOPOLIS62110507SANTI18630400E4";
+document.getElementById("pixCode").textContent=PIX;
+function addAcomp(){const d=document.createElement("div");d.className="form-row acomp";d.innerHTML='<input class="anome" placeholder="Nome do acompanhante"><select class="asexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select><select class="afaixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select><button class="remove" type="button" onclick="this.parentElement.remove()">×</button>';acomp.appendChild(d)}
+function show(t,type="err"){msg.textContent=t;msg.className="msg "+type;msg.scrollIntoView({behavior:"smooth",block:"nearest"})}
 async function enviar(){
-  const nome=document.getElementById('nome').value.trim(),sexo=document.getElementById('sexo').value,faixa=document.getElementById('faixa').value;
-  if(!nome||!sexo||!faixa)return show('Preencha seu nome, Homem/Mulher e Adulto/Criança.');
-  const acompanhantes=[...document.querySelectorAll('.acomp')].map(r=>({nome:r.querySelector('.anome').value.trim(),sexo:r.querySelector('.asexo').value,faixa:r.querySelector('.afaixa').value}));
-  for(const a of acompanhantes){if(!a.nome||!a.sexo||!a.faixa)return show('Preencha todos os campos de cada acompanhante ou remova a linha vazia.')}
-  const b=document.getElementById('submit');b.disabled=true;b.textContent='Confirmando...';
-  try{
-    const res=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({nome,sexo,faixa,acompanhantes})});
-    const out=await res.json();
-    if(!res.ok)show(out.error||'Não foi possível confirmar.');
-    else{show('Presença confirmada! 💛','ok');b.style.display='none';}
-  }catch(e){show('Falha de conexão. Tente novamente em instantes.')}
-  finally{b.disabled=false;if(b.style.display!=='none')b.textContent='Confirmar presença'}
+ const nome=document.getElementById("nome").value.trim(),sexo=document.getElementById("sexo").value,faixa=document.getElementById("faixa").value;
+ if(!nome||!sexo||!faixa)return show("Preencha seu nome, Homem/Mulher e Adulto/Criança.");
+ const acompanhantes=[...document.querySelectorAll(".acomp")].map(r=>({nome:r.querySelector(".anome").value.trim(),sexo:r.querySelector(".asexo").value,faixa:r.querySelector(".afaixa").value}));
+ for(const a of acompanhantes)if(!a.nome||!a.sexo||!a.faixa)return show("Preencha todos os campos dos acompanhantes ou remova a linha vazia.");
+ submit.disabled=true;submit.textContent="Confirmando...";
+ try{
+   const r=await fetch(API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({nome,sexo,faixa,acompanhantes})});
+   const out=await r.json();
+   if(!r.ok)return show(out.error||"Não foi possível confirmar.");
+   show("Presença registrada. Agora falta apenas o Pix de R$ 20.","ok");
+   submit.style.display="none";pixBox.classList.add("show");pixBox.scrollIntoView({behavior:"smooth",block:"start"});
+ }catch(e){show("Falha de conexão. Tente novamente em instantes.")}
+ finally{submit.disabled=false;if(submit.style.display!=="none")submit.textContent="Confirmar e gerar Pix de R$ 20"}
 }
+async function copiarPix(){try{await navigator.clipboard.writeText(PIX);alert("Código Pix copiado!")}catch(e){prompt("Copie o código Pix:",PIX)}}
 </script>
-</body>
-</html>
+</body></html>
