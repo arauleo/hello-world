@@ -49,7 +49,7 @@ button{border:0;border-radius:999px;padding:13px 18px;cursor:pointer;font-weight
 <section class="card" id="confirmar">
   <div class="kicker">Confirmação de presença</div>
   <h2>Vai jogar com a gente?</h2>
-  <p class="sub">Preencha seus dados e, se vier acompanhado, adicione cada pessoa. Depois da confirmação será gerado o Pix de <b>R$ 20</b>.</p>
+  <p class="sub">Preencha seus dados e, se vier acompanhado, adicione cada pessoa. Depois da confirmação será gerado o Pix de <b>R$ 20 por pessoa</b>.</p>
   <div class="form-row">
     <input id="nome" placeholder="Seu nome completo" autocomplete="name">
     <select id="sexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select>
@@ -60,14 +60,15 @@ button{border:0;border-radius:999px;padding:13px 18px;cursor:pointer;font-weight
   <button class="secondary" type="button" onclick="addAcomp()">＋ Adicionar acompanhante</button>
   <div class="note">Cada pessoa deve aparecer em apenas uma confirmação. Confirme até uma semana antes do evento.</div>
   <div id="msg" class="msg"></div>
-  <button id="submit" class="primary" type="button" onclick="enviar()">Confirmar e gerar Pix de R$ 20</button>
+  <button id="submit" class="primary" type="button" onclick="enviar()">Confirmar e gerar Pix</button>
 
   <div id="pixBox" class="pix">
     <div class="kicker">Pagamento</div>
     <h2 style="margin-bottom:4px">Presença registrada ✓</h2>
     <p class="sub">Para concluir, faça o Pix abaixo. O pagamento será conferido pela organização.</p>
-    <img alt="QR Code Pix de R$ 20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeoAAAHqAQAAAADjFjCXAAAEXklEQVR4nO2dQW7rOAyGP44NdCkDOUCPIt9gzvSO9G5gHSUHKCAvC8jgLChZ7ptd7EGbCblI48QfFAMEJf4UVVFOWPrrDA2OO+6444477rjjjl+LS7XR3pGmTWRe66XMAKwiMq/t1vm60R1/NXy0P3EBWG9A+Bgl3kdI7wXLNZKAwlAEhgKAXDK646+Nrz2kVUfUZRUhiQhRCyLv5m+IyHjx6I6/Fj7+ca1pHgppAqJuo8R8K7BOFvWU9dLRHXccQOZQ6ovIm0IokCYQmUDm/3Z0x18LD6q6ALqwiS7rm122CXfQw9SrWi4e3fHXwqsnJcsOBiTe31RiviEx3+xLexd/3wA2uXB0x18TN6/rZTFNE6Ksm5DePwVzs/ApmqYBCF8raE/97I5/F46qqhL3STPaZbX2xVA/W4IqMdf7dHnqZ3f8u/A91g0qhAysEzVpXW9FWSc0/f0hsN6KVKFuKK7XOX7CLKQRCsQMFs0sfei35EHbfaqquWIe6xx/zOpUmgFCsQRVF/O6Qe2dzbp5UNU82KzrXuf4WVzmXRtJVnjYWiIBVNEktOQiyZt+wU+O7vir4S1oMaguodASiRr1jslFHrTpenty8dTP7vh34Qevs3WdOReDVq/LgOWweajKsc+wjp/Dm3KSAUJdvh1fuoex39J0Ffc6xx+znsP23LT7X0tpQZdQ7IUaCd3rHH/UqvuEQpVPdiGlyycmC3sO6/hF+DGbOMQ6syaa0ISUo/+51zl+Eo/6KSLvpe5gj5a+for+mqAt6Qo29dZIeN3ojr8Y3vaczKCsIwpbq5KtE0LYRtvQmWZBk4CmKV80uuOvibfahLZUoQsk7JX+rpzonmG4Xuf443ZIWoE9S92VuyYL6xKaVBybfOxe5/hjdshhLTfNQC3B0tSUDCauWIE2uNc5fsp2xbdVJPKwi8aFuqu9pw/NO93rHD+LW7Nh1M/WnsixNgG0RDbmQfWXV/8dP2e1IqatGAZQ5TubelV7wKuliuAqseNnrKokacrW7A8hI1E3UQCJd9m7KgYVU4l/exe246esxrR9p4kFt7DnFZa5QlOJCy2R9Vjn+KPWS2Btrm37AOo2umO5v5clfIZ1/IT19LWu65os1/W6tvGpIV6Hdfwc/qVbR7tAXPt2DlJx31oMuHLi+Bk7bDLZ+1wPW9Zjm3U59I2FJvG51zn+ON5VErv8JaOdqUNt2TnWwYh5P2fnJ/x4x58ONw2k9YINhTRlpMonJqmosE5gO03WW8Has68Y3fGXxuuUCsS8iepdxPoRY96kB8Eun8h84eiOvxh+7NbptQk7K6xXX/tngK/rHL8eH9T6rON9PGy3k7mfZIev6xw/Y/86IRY20aigrEMRO04sfIwQygghQ1y2hj31szv+3Xgr8pulaRPSBKr38bDnzuIf/STPn/HjHX9OPImInTws8qYy79pcelc9Hmxia739AJQf8eMdfzZc/L/XOe6444477rjjjv8v8H8A0r+/oNNjbNEAAAAASUVORK5CYII=">
-    <div class="value">R$ 20,00</div>
+    <img id="pixQr" alt="QR Code Pix" src="">
+    <div id="pixValue" class="value">R$ 20,00</div>
+    <div id="pixPeople" class="sub" style="margin:0 0 8px"></div>
     <div><b>Chave Pix:</b> (48) 99998-0127</div>
     <button class="secondary" style="margin-top:12px" onclick="copiarPix()">Copiar código Pix</button>
     <div id="pixCode" class="pixcode"></div>
@@ -95,9 +96,17 @@ button{border:0;border-radius:999px;padding:13px 18px;cursor:pointer;font-weight
 </div>
 <script>
 const API="https://boqtftbesaypalvfxkjd.supabase.co/functions/v1/rsvp-volei";
-const PIX="00020126570014BR.GOV.BCB.PIX0114+55489999801270217VOLEI E FUTEVOLEI520400005303986540520.005802BR5905SANTI6013FLORIANOPOLIS62110507SANTI18630400E4";
-document.getElementById("pixCode").textContent=PIX;
-function addAcomp(){const d=document.createElement("div");d.className="form-row acomp";d.innerHTML='<input class="anome" placeholder="Nome do acompanhante"><select class="asexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select><select class="afaixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select><button class="remove" type="button" onclick="this.parentElement.remove()">×</button>';acomp.appendChild(d)}
+let PIX="";
+function atualizarValorBotao(){
+  const total=1+document.querySelectorAll(".acomp").length;
+  submit.textContent="Confirmar e gerar Pix de R$ "+(total*20);
+}
+function addAcomp(){
+  const d=document.createElement("div");d.className="form-row acomp";
+  d.innerHTML='<input class="anome" placeholder="Nome do acompanhante"><select class="asexo"><option value="">Homem/Mulher</option><option value="homem">Homem</option><option value="mulher">Mulher</option></select><select class="afaixa"><option value="">Adulto/Criança</option><option value="adulto">Adulto</option><option value="crianca">Criança</option></select><button class="remove" type="button">×</button>';
+  d.querySelector(".remove").onclick=()=>{d.remove();atualizarValorBotao()};
+  acomp.appendChild(d);atualizarValorBotao()
+}
 function show(t,type="err"){msg.textContent=t;msg.className="msg "+type;msg.scrollIntoView({behavior:"smooth",block:"nearest"})}
 async function enviar(){
  const nome=document.getElementById("nome").value.trim(),sexo=document.getElementById("sexo").value,faixa=document.getElementById("faixa").value;
@@ -109,11 +118,19 @@ async function enviar(){
    const r=await fetch(API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({nome,sexo,faixa,acompanhantes})});
    const out=await r.json();
    if(!r.ok)return show(out.error||"Não foi possível confirmar.");
-   show("Presença registrada. Agora falta apenas o Pix de R$ 20.","ok");
+   PIX=out.pix.codigo;
+   const valor=Number(out.pix.valor||0);
+   const pessoas=Number(out.pix.pessoas||1);
+   show("Presença registrada. Agora falta apenas o Pix de R$ "+valor.toFixed(2).replace(".",",")+".","ok");
+   pixValue.textContent="R$ "+valor.toFixed(2).replace(".",",");
+   pixPeople.textContent=pessoas+" pessoa(s) × R$ 20,00";
+   pixCode.textContent=PIX;
+   pixQr.src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(PIX);
    submit.style.display="none";pixBox.classList.add("show");pixBox.scrollIntoView({behavior:"smooth",block:"start"});
  }catch(e){show("Falha de conexão. Tente novamente em instantes.")}
- finally{submit.disabled=false;if(submit.style.display!=="none")submit.textContent="Confirmar e gerar Pix de R$ 20"}
+ finally{submit.disabled=false;if(submit.style.display!=="none")atualizarValorBotao()}
 }
 async function copiarPix(){try{await navigator.clipboard.writeText(PIX);alert("Código Pix copiado!")}catch(e){prompt("Copie o código Pix:",PIX)}}
+atualizarValorBotao();
 </script>
 </body></html>
